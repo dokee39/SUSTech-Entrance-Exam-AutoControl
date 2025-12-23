@@ -89,6 +89,7 @@
     font: "Latin Modern Math",
     stylistic-set: 03,
   )
+  set figure(supplement: [图], gap: 1.25em, caption: [])
 
   [
     #align(center)[

@@ -3,8 +3,6 @@
 
 #show: exam.with(year: 2026)
 
-#set figure(supplement: [图])
-
 // 1
 #part(
   [考虑具有如下动态方程的系统：],
@@ -59,50 +57,47 @@
   points: 15,
   [如果一个控制系统如@fig1 所示，确定系统参数 $K$ 和 $tau$，使整个闭环系统的阻尼率 $zeta = 0.75$，单位斜坡输入的稳态误差为 $e_"ss" = 0.25$。],
   [
-    #figure(caption: [])[
-      #align(center)[
-        #f.diagram(
-          spacing: (2em, 2em),
-          node-stroke: 0.6pt,
-          mark-scale: 80%,
+    #figure[
+      #f.diagram(
+        spacing: (2em, 2em),
+        node-stroke: 0.6pt,
+        mark-scale: 80%,
 
-          let sum_radius = 0.36em,
-          let sum_sym_d = 0.5em,
+        let sum_radius = 0.36em,
+        let sum_sym_d = 0.5em,
 
-          let In = (-4.5, 0),
-          let Sum2 = (-3, 0),
-          let Sum1 = (-1.5, 0),
-          let G = (0, 0),
-          let H = (0, 0.8),
-          let Fb_h = 1.4,
-          let Branch1 = (1.5, 0),
-          let Branch2 = (3, 0),
-          let Out = (4.5, 0),
+        let In = (-4.5, 0),
+        let Sum2 = (-3, 0),
+        let Sum1 = (-1.5, 0),
+        let G = (0, 0),
+        let H = (0, 0.8),
+        let Fb_h = 1.4,
+        let Branch1 = (1.5, 0),
+        let Branch2 = (3, 0),
+        let Out = (4.5, 0),
 
-          f.node(Sum2, name: <Sum2>, radius: sum_radius),
-          f.node(Sum1, name: <Sum1>, radius: sum_radius),
-          f.node(G, name: <G>, shape: rect)[$ K / (s(s + 2)) $],
-          f.node(H, name: <H>, shape: rect)[$ tau s $],
+        f.node(Sum2, name: <Sum2>, radius: sum_radius),
+        f.node(Sum1, name: <Sum1>, radius: sum_radius),
+        f.node(G, name: <G>, shape: rect)[$ K / (s(s + 2)) $],
+        f.node(H, name: <H>, shape: rect)[$ tau s $],
 
-          f.edge(In, <Sum2>, "-}>", label-pos: 0, label-side: left)[$R(s)$],
-          f.edge(<Sum2>, <Sum1>, "-}>"),
-          f.edge(<Sum1>, <G>, "-}>"),
-          f.edge(<G>, Out, "-}>", label-pos: 1, label-side: left)[$C(s)$],
-          f.edge(Branch1, (Branch1.at(0), H.at(1)), "-"),
-          f.edge((Branch1.at(0), H.at(1)), <H>, "-}>"),
-          f.edge(<H>, (Sum1.at(0), H.at(1)), "-"),
-          f.edge((Sum1.at(0), H.at(1)), <Sum1>, "-}>"),
-          f.edge(Branch1, (Branch1.at(0), H.at(1)), "-"),
-          f.edge(Branch2, (Branch2.at(0), Fb_h), "-"),
-          f.edge((Branch2.at(0), Fb_h), (Sum2.at(0), Fb_h), "-"),
-          f.edge((Sum2.at(0), Fb_h), <Sum2>, "-}>"),
+        f.edge(In, <Sum2>, "-}>", label-pos: 0, label-side: left)[$R(s)$],
+        f.edge(<Sum2>, <Sum1>, "-}>"),
+        f.edge(<Sum1>, <G>, "-}>"),
+        f.edge(<G>, Out, "-}>", label-pos: 1, label-side: left)[$C(s)$],
+        f.edge(Branch1, (Branch1.at(0), H.at(1)), "-"),
+        f.edge((Branch1.at(0), H.at(1)), <H>, "-}>"),
+        f.edge(<H>, (Sum1.at(0), H.at(1)), "-"),
+        f.edge((Sum1.at(0), H.at(1)), <Sum1>, "-}>"),
+        f.edge(Branch2, (Branch2.at(0), Fb_h), "-"),
+        f.edge((Branch2.at(0), Fb_h), (Sum2.at(0), Fb_h), "-"),
+        f.edge((Sum2.at(0), Fb_h), <Sum2>, "-}>"),
 
-          f.node((rel: (125deg, 1.3 * sum_sym_d), to: <Sum2.east>), stroke: none)[#text("+", size: 0.8em)],
-          f.node((rel: (225deg, sum_sym_d),  to: <Sum2.south>), stroke: none)[#text("-", size: 1.0em)],
-          f.node((rel: (125deg, 1.3 * sum_sym_d), to: <Sum1.west>), stroke: none)[#text("+", size: 0.8em)],
-          f.node((rel: (225deg, sum_sym_d),  to: <Sum1.south>), stroke: none)[#text("-", size: 1.0em)],
-        )
-      ]
+        f.node((rel: (125deg, 1.3 * sum_sym_d), to: <Sum2.west>), stroke: none)[#text("+", size: 0.7em)],
+        f.node((rel: (225deg, sum_sym_d),  to: <Sum2.south>), stroke: none)[#text("-", size: 1.0em)],
+        f.node((rel: (125deg, 1.3 * sum_sym_d), to: <Sum1.west>), stroke: none)[#text("+", size: 0.7em)],
+        f.node((rel: (225deg, sum_sym_d),  to: <Sum1.south>), stroke: none)[#text("-", size: 1.0em)],
+      )
     ] <fig1>
   ]
 )
@@ -110,69 +105,67 @@
 // 5
 #part(
   points: 15,
-  [确定@fig2 所示控制系统的传递函数 $U_c(s) / U_r(s)$。],
+  [确定@fig2 所示控制系统的传递函数 $(U_c (s)) / (U_r (s))$。],
   [
-    #figure(caption: [])[
-      #align(center)[
-        #f.diagram(
-          spacing: (2em, 2em),
-          node-stroke: 0.6pt,
-          mark-scale: 80%,
+    #figure[
+      #f.diagram(
+        spacing: (2em, 2em),
+        node-stroke: 0.6pt,
+        mark-scale: 80%,
 
-          let sum_radius = 0.36em,
-          let sum_sym_d = 0.5em,
+        let sum_radius = 0.36em,
+        let sum_sym_d = 0.5em,
 
-          let In = (0, 0),
-          let Sum1 = (1.5, 0),
-          let G1 = (3, 0),
-          let Sum2 = (4, 0),
-          let G2 = (5, 0),
-          let Branch1 = (6, 0),
-          let Sum3 = (7, 0),
-          let G3 = (8, 0),
-          let Branch2 = (9, 0),
-          let G4 = (10, 0),
-          let Branch3 = (11, 0),
-          let Out = (12.5, 0),
-          let Fb_h = 1,
+        let In = (0, 0),
+        let Sum1 = (1.5, 0),
+        let G1 = (3, 0),
+        let Sum2 = (4, 0),
+        let G2 = (5, 0),
+        let Branch1 = (6, 0),
+        let Sum3 = (7, 0),
+        let G3 = (8, 0),
+        let Branch2 = (9, 0),
+        let G4 = (10, 0),
+        let Branch3 = (11, 0),
+        let Out = (12.5, 0),
+        let Fb_h = 1,
 
-          f.node(Sum1, name: <Sum1>, radius: sum_radius),
-          f.node(Sum2, name: <Sum2>, radius: sum_radius),
-          f.node(Sum3, name: <Sum3>, radius: sum_radius),
-          f.node(G1, name: <G1>, shape: rect)[$ 1 / R_1 $],
-          f.node(G2, name: <G2>, shape: rect)[$ 1 / (C_1 s) $],
-          f.node(G3, name: <G3>, shape: rect)[$ 1 / R_2 $],
-          f.node(G4, name: <G4>, shape: rect)[$ 1 / (C_2 s) $],
+        f.node(Sum1, name: <Sum1>, radius: sum_radius),
+        f.node(Sum2, name: <Sum2>, radius: sum_radius),
+        f.node(Sum3, name: <Sum3>, radius: sum_radius),
+        f.node(G1, name: <G1>, shape: rect)[$ 1 / R_1 $],
+        f.node(G2, name: <G2>, shape: rect)[$ 1 / (C_1 s) $],
+        f.node(G3, name: <G3>, shape: rect)[$ 1 / R_2 $],
+        f.node(G4, name: <G4>, shape: rect)[$ 1 / (C_2 s) $],
 
-          f.edge(In, <Sum1>, "-}>", label-pos: 0, label-side: left)[$U_r (s)$],
-          f.edge(<Sum1>, <G1>, "-}>"),
-          f.edge(<G1>, <Sum2>, "-}>"),
-          f.edge(<Sum2>, <G2>, "-}>"),
-          f.edge(<G2>, Branch1, "-"),
-          f.edge(Branch1, <Sum3>, "-}>"),
-          f.edge(<Sum3>, <G3>, "-}>"),
-          f.edge(<G3>, Branch2, "-"),
-          f.edge(Branch2, <G4>, "-}>"),
-          f.edge(<G4>, Branch3, "-"),
-          f.edge(Branch3, Out, "-}>", label-pos: 1, label-side: left)[$U_c (s)$],
-          f.edge(Branch1, (Branch1.at(0), Fb_h), "-"),
-          f.edge((Branch1.at(0), Fb_h), (Sum1.at(0), Fb_h), "-"),
-          f.edge((Sum1.at(0), Fb_h), <Sum1>, "-}>"),
-          f.edge(Branch2, (Branch2.at(0), -Fb_h), "-"),
-          f.edge((Branch2.at(0), -Fb_h), (Sum2.at(0), -Fb_h), "-"),
-          f.edge((Sum2.at(0), -Fb_h), <Sum2>, "-}>"),
-          f.edge(Branch3, (Branch3.at(0), Fb_h), "-"),
-          f.edge((Branch3.at(0), Fb_h), (Sum3.at(0), Fb_h), "-"),
-          f.edge((Sum3.at(0), Fb_h), <Sum3>, "-}>"),
+        f.edge(In, <Sum1>, "-}>", label-pos: 0, label-side: left)[$U_r (s)$],
+        f.edge(<Sum1>, <G1>, "-}>"),
+        f.edge(<G1>, <Sum2>, "-}>"),
+        f.edge(<Sum2>, <G2>, "-}>"),
+        f.edge(<G2>, Branch1, "-"),
+        f.edge(Branch1, <Sum3>, "-}>"),
+        f.edge(<Sum3>, <G3>, "-}>"),
+        f.edge(<G3>, Branch2, "-"),
+        f.edge(Branch2, <G4>, "-}>"),
+        f.edge(<G4>, Branch3, "-"),
+        f.edge(Branch3, Out, "-}>", label-pos: 1, label-side: left)[$U_c (s)$],
+        f.edge(Branch1, (Branch1.at(0), Fb_h), "-"),
+        f.edge((Branch1.at(0), Fb_h), (Sum1.at(0), Fb_h), "-"),
+        f.edge((Sum1.at(0), Fb_h), <Sum1>, "-}>"),
+        f.edge(Branch2, (Branch2.at(0), -Fb_h), "-"),
+        f.edge((Branch2.at(0), -Fb_h), (Sum2.at(0), -Fb_h), "-"),
+        f.edge((Sum2.at(0), -Fb_h), <Sum2>, "-}>"),
+        f.edge(Branch3, (Branch3.at(0), Fb_h), "-"),
+        f.edge((Branch3.at(0), Fb_h), (Sum3.at(0), Fb_h), "-"),
+        f.edge((Sum3.at(0), Fb_h), <Sum3>, "-}>"),
 
-          f.node((rel: (125deg, 1.3 * sum_sym_d), to: <Sum1.west>), stroke: none)[#text("+", size: 0.8em)],
-          f.node((rel: (225deg, sum_sym_d),  to: <Sum1.south>), stroke: none)[#text("-", size: 1.0em)],
-          f.node((rel: (-125deg, 1.3 * sum_sym_d), to: <Sum2.west>), stroke: none)[#text("+", size: 0.8em)],
-          f.node((rel: (-225deg, sum_sym_d),  to: <Sum2.north>), stroke: none)[#text("-", size: 1.0em)],
-          f.node((rel: (125deg, 1.3 * sum_sym_d), to: <Sum3.west>), stroke: none)[#text("+", size: 0.8em)],
-          f.node((rel: (225deg, sum_sym_d),  to: <Sum3.south>), stroke: none)[#text("-", size: 1.0em)],
-        )
-      ]
+        f.node((rel: (125deg, 1.3 * sum_sym_d), to: <Sum1.west>), stroke: none)[#text("+", size: 0.7em)],
+        f.node((rel: (225deg, sum_sym_d),  to: <Sum1.south>), stroke: none)[#text("-", size: 1.0em)],
+        f.node((rel: (-125deg, 1.3 * sum_sym_d), to: <Sum2.west>), stroke: none)[#text("+", size: 0.7em)],
+        f.node((rel: (-225deg, sum_sym_d),  to: <Sum2.north>), stroke: none)[#text("-", size: 1.0em)],
+        f.node((rel: (125deg, 1.3 * sum_sym_d), to: <Sum3.west>), stroke: none)[#text("+", size: 0.7em)],
+        f.node((rel: (225deg, sum_sym_d),  to: <Sum3.south>), stroke: none)[#text("-", size: 1.0em)],
+      )
     ] <fig2>
   ]
 )
@@ -188,58 +181,55 @@
   points: 15,
   [假如一个闭环系统如@fig3 所示，确定增益 $K_1$ 和系数 $alpha$，使系统的两个闭环主导极点为 $s_(1, 2) = -3 plus.minus 3 "j"$。],
   [
-    #figure(caption: [])[
-      #align(center)[
-        #f.diagram(
-          spacing: (2em, 2em),
-          node-stroke: 0.6pt,
-          mark-scale: 80%,
+    #figure[
+      #f.diagram(
+        spacing: (2em, 2em),
+        node-stroke: 0.6pt,
+        mark-scale: 80%,
 
-          let sum_radius = 0.36em,
-          let sum_sym_d = 0.5em,
+        let sum_radius = 0.36em,
+        let sum_sym_d = 0.5em,
 
-          let In = (0, 0),
-          let Sum2 = (1.5, 0),
-          let G1 = (3, 0),
-          let Sum1 = (4, 0),
-          let G2 = (5, 0),
-          let H = (5, 0.8),
-          let Fb_h = 1.4,
-          let Branch1 = (6, 0),
-          let G3 = (7, 0),
-          let Branch2 = (8, 0),
-          let Out = (9.5, 0),
+        let In = (0, 0),
+        let Sum2 = (1.5, 0),
+        let G1 = (3, 0),
+        let Sum1 = (4, 0),
+        let G2 = (5, 0),
+        let H = (5, 0.8),
+        let Fb_h = 1.4,
+        let Branch1 = (6, 0),
+        let G3 = (7, 0),
+        let Branch2 = (8, 0),
+        let Out = (9.5, 0),
 
-          f.node(Sum2, name: <Sum2>, radius: sum_radius),
-          f.node(Sum1, name: <Sum1>, radius: sum_radius),
-          f.node(G1, name: <G1>, shape: rect)[$ K_1 / (0.05 s + 1) $],
-          f.node(G2, name: <G2>, shape: rect)[$ 1 / (s + 1) $],
-          f.node(G3, name: <G3>, shape: rect)[$ 1 / s $],
-          f.node(H, name: <H>, shape: rect)[$ alpha $],
+        f.node(Sum2, name: <Sum2>, radius: sum_radius),
+        f.node(Sum1, name: <Sum1>, radius: sum_radius),
+        f.node(G1, name: <G1>, shape: rect)[$ K_1 / (0.05 s + 1) $],
+        f.node(G2, name: <G2>, shape: rect)[$ 1 / (s + 1) $],
+        f.node(G3, name: <G3>, shape: rect)[$ 1 / s $],
+        f.node(H, name: <H>, shape: rect)[$ alpha $],
 
-          f.edge(In, <Sum2>, "-}>", label-pos: 0, label-side: left)[$R(s)$],
-          f.edge(<Sum2>, <G1>, "-}>"),
-          f.edge(<G1>, <Sum1>, "-}>"),
-          f.edge(<Sum1>, <G2>, "-}>"),
-          f.edge(<G2>, Branch1, "-"),
-          f.edge(Branch1, <G3>, "-}>"),
-          f.edge(<G3>, Branch2, "-"),
-          f.edge(Branch2, Out, "-}>", label-pos: 1, label-side: left)[$Y(s)$],
-          f.edge(Branch1, (Branch1.at(0), H.at(1)), "-"),
-          f.edge((Branch1.at(0), H.at(1)), <H>, "-}>"),
-          f.edge(<H>, (Sum1.at(0), H.at(1)), "-"),
-          f.edge((Sum1.at(0), H.at(1)), <Sum1>, "-}>"),
-          f.edge(Branch1, (Branch1.at(0), H.at(1)), "-"),
-          f.edge(Branch2, (Branch2.at(0), Fb_h), "-"),
-          f.edge((Branch2.at(0), Fb_h), (Sum2.at(0), Fb_h), "-"),
-          f.edge((Sum2.at(0), Fb_h), <Sum2>, "-}>"),
+        f.edge(In, <Sum2>, "-}>", label-pos: 0, label-side: left)[$R(s)$],
+        f.edge(<Sum2>, <G1>, "-}>"),
+        f.edge(<G1>, <Sum1>, "-}>"),
+        f.edge(<Sum1>, <G2>, "-}>"),
+        f.edge(<G2>, Branch1, "-"),
+        f.edge(Branch1, <G3>, "-}>"),
+        f.edge(<G3>, Branch2, "-"),
+        f.edge(Branch2, Out, "-}>", label-pos: 1, label-side: left)[$Y(s)$],
+        f.edge(Branch1, (Branch1.at(0), H.at(1)), "-"),
+        f.edge((Branch1.at(0), H.at(1)), <H>, "-}>"),
+        f.edge(<H>, (Sum1.at(0), H.at(1)), "-"),
+        f.edge((Sum1.at(0), H.at(1)), <Sum1>, "-}>"),
+        f.edge(Branch2, (Branch2.at(0), Fb_h), "-"),
+        f.edge((Branch2.at(0), Fb_h), (Sum2.at(0), Fb_h), "-"),
+        f.edge((Sum2.at(0), Fb_h), <Sum2>, "-}>"),
 
-          f.node((rel: (125deg, 1.3 * sum_sym_d), to: <Sum2.east>), stroke: none)[#text("+", size: 0.8em)],
-          f.node((rel: (225deg, sum_sym_d),  to: <Sum2.south>), stroke: none)[#text("-", size: 1.0em)],
-          f.node((rel: (125deg, 1.3 * sum_sym_d), to: <Sum1.west>), stroke: none)[#text("+", size: 0.8em)],
-          f.node((rel: (225deg, sum_sym_d),  to: <Sum1.south>), stroke: none)[#text("-", size: 1.0em)],
-        )
-      ]
+        f.node((rel: (125deg, 1.3 * sum_sym_d), to: <Sum2.west>), stroke: none)[#text("+", size: 0.7em)],
+        f.node((rel: (225deg, sum_sym_d),  to: <Sum2.south>), stroke: none)[#text("-", size: 1.0em)],
+        f.node((rel: (125deg, 1.3 * sum_sym_d), to: <Sum1.west>), stroke: none)[#text("+", size: 0.7em)],
+        f.node((rel: (225deg, sum_sym_d),  to: <Sum1.south>), stroke: none)[#text("-", size: 1.0em)],
+      )
     ] <fig3>
   ]
 )
