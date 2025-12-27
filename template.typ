@@ -1,5 +1,65 @@
+#import "@preview/fletcher:0.5.8" as f: diagram, node, edge
+
 #let part_counter = counter("exam-part")
 #let sub_counter  = counter("exam-sub")
+
+#let ctrl-diagram = f.diagram.with(
+  spacing: (2em, 2em),
+  node-stroke: 0.6pt,
+  edge-stroke: 0.6pt,
+  mark-scale: 80%,
+  edge-corner-radius: 0pt,
+)
+
+#let sum-node = f.node.with(
+  shape: circle,
+  radius: 0.36em,
+)
+
+#let block-node = f.node.with(
+  shape: rect,
+)
+
+#let sym-node(
+  sym,
+  sum,
+  anchor: "west",
+  other-side: false,
+  offset: auto,
+  size: auto,
+) = {
+  let size = {
+    if size == auto {
+      if sym == "+" { 0.7em } else { 1.0em }
+    } else { size }
+  }
+
+  let offset = {
+    if offset == auto {
+      if sym == "+" { 0.65em } else { 0.5em }
+    } else { offset }
+  }
+
+  let ang = {
+    if anchor == "west" {
+      if other-side { 235deg } else { 125deg }
+    } else if anchor == "east" {
+      if other-side { 305deg } else { 55deg }
+    } else if anchor == "north" {
+      if other-side { 45deg } else { 135deg }
+    } else if anchor == "south" {
+      if other-side { 315deg } else { 225deg }
+    } else {
+      if other-side { 235deg } else { 125deg }
+    }
+  }
+
+  let tgt = (name: sum, anchor: anchor)
+
+  f.node((rel: (ang, offset), to: tgt), stroke: none)[
+    #text(sym, size: size)
+  ]
+}
 
 #let sub(points, text) = (
   kind: "sub",
@@ -57,7 +117,7 @@
 
   set document(
     author: "dokee.moe",
-    title: "SUSTech-Entrance-Exam-AutoControl-" + str(year),
+    title: "SUSTech-Entrance-Exam-AutoControl-" + str(year) + " - dokee.moe",
   )
 
   set page(
